@@ -25,11 +25,11 @@ void(* resetFunc) (void) = 0;
 int rede = 220;
 
 void setup()
-{  
+{   
     //INICIA LCD
     lcd.begin(16, 2);
     lcd.clear();
-    //INICIA PORTA DO WIFI Em 115200 baudrate RX TX
+    //INICIA PORTA DO WIFI Em 115200 baudrate RX TX 
     Serial1.begin(115200);
     Serial.begin(9600);
     
