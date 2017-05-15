@@ -63,8 +63,6 @@ uint8_t buffer[128];
 
 void loop()
 {
-
-
   //calcula corrente
   double Irms = emon1.calcIrms(1480);
   
