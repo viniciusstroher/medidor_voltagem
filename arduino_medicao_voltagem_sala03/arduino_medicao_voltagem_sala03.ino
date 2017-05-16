@@ -11,7 +11,7 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 //CONFIGURAR WIFI
 #define SSID        "COBRE"
 #define PASSWORD    "robotica"
-#define HOST_NAME   "192.168.25.2"
+#define HOST_NAME   "192.168.0.3"
 
 //utilizar a porta 8091 para a sala 03 e a porta 8092 para a sala 02
 #define HOST_PORT   (8091)
@@ -60,7 +60,7 @@ void setup()
 char* params;    
 String paramsArduino = "";
 uint8_t buffer[128];
-
+int delay_mais = 0;
 void loop()
 {
   //calcula corrente
@@ -90,7 +90,14 @@ void loop()
       //envia dados para o servidor
       if (wifi.send(mux_id, (const uint8_t*)params, strlen(params))) {
          Serial.println("Enviando: "+paramsArduino);
-               
+         //delay 5min
+         
+         //envia 20 vezes rapido e depois da delay
+         if(delay_mais == 20){
+          delay(300000);      
+         }else{
+          delay_mais +=1;
+         }
       }else{
          resetFunc();
       }
@@ -106,6 +113,5 @@ void loop()
      Serial.println(" tcp not create");
      resetFunc();    
   }
-
-  
+ 
 }
