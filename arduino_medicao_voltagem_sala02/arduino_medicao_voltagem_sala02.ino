@@ -54,6 +54,7 @@ void setup()
     lcd.setCursor(0,1);
     lcd.print("Pot. (W):");
     
+    delay(1000);
 }
 
 //declaracao de variaveis do escopo
